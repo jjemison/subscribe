@@ -16,4 +16,8 @@ angular.module('mySub.subscribe', ['ngRoute', 'firebase'])
   $scope.subscribe = $firebaseArray(ref);
   console.log($scope.subscribe);
 
+  $scope.showAddForm = function() {
+    $scope.addFormShow = true;
+  }
+
 }]);
