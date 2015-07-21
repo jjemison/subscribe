@@ -1,1 +1,30 @@
-<p>This is the partial for view 1.</p>
+<div class="row" ng-controller="SubscribeCtrl">
+  <div class="large-10 columns">
+    <h3>Your Subscriptions 3</h3>
+       <table>
+      <thead>
+        <tr>
+          <th width="200px">Name of Service</th>
+          <th width="200px;">Monthly Cost</th>
+          <th width="25%;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat= "subscribed in subsribe">
+          <td><a href="#">{{subscribed.name}}</a></td>
+          <td>{{subscribed.price}}</td>
+          <td><a class="button tiny" ng-click="showEditForm(subscribed)">Edit</a> 
+            <a class="button tiny alert" ng-click="removeSubscription(subscribed)">Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="small-12 large-2 columns">
+      <a class="button medium" ng-click="showAddForm()" >+</a>
+      <a class="button large">-</a>
+    </div>
+</div>
+
+
+
+

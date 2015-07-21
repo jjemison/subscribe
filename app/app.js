@@ -2,7 +2,9 @@
 
 // Declare app level module which depends on views, and components
 angular.module('mySub', [
-  'ngRoute'
+  'ngRoute',
+  'firebase',
+  'mySub.subscribe'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/subscribe'});
