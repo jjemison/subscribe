@@ -1,6 +1,6 @@
 <div class="row" ng-controller="SubscribeCtrl">
   <div class="large-10 columns">
-
+    <div data-alert ng-show="msg" class="alert-box">{{msg}}</div>
     <form ng-submit="addFormSubmit()" ng-show="addFormShow">
         <h3>Add Subscription</h3>
         <!-- Add Form -->
@@ -12,7 +12,7 @@
           </div>
           <div class="large-6 columns">
             <label>Monthly Cost of Subscription:
-              <input type="text" ng-model="price" placeholder="Subscription PRice" required />
+              <input type="text" ng-model="price" placeholder="Subscription Price" required />
             </label>
           </div>
        </div>
@@ -32,18 +32,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat= "subscribed in subsribe">
-          <td><a href="#">{{subscribed.name}}</a></td>
-          <td>{{subscribed.price}}</td>
-          <td><a class="button tiny" ng-click="showEditForm(subscribed)">Edit</a> 
-            <a class="button tiny alert" ng-click="removeSubscription(subscribed)">Delete</a></td>
+        <tr ng-repeat= "subscriber in subscribe">
+          <td><a href="#">{{subscriber.name}}</a></td>
+          <td>{{subscriber.price}}</td>
+          <td><a class="button tiny" ng-click="showEditForm(subscriber)">Edit</a> 
+            <a class="button tiny alert" ng-click="removeSubscription(subscriber)">Delete</a></td>
         </tr>
       </tbody>
     </table>
     </div>
     <div class="small-12 large-2 columns">
-      <a class="button medium" ng-click="showAddForm()" >+</a>
-      <a class="button medium">-</a>
+      <a class="button medium" ng-click="showAddForm()" ng-hide="addFormShow">+</a>
+      <a class="button medium" ng-click="hide()" ng-show="addFormShow">-</a>
     </div>
 </div>
 

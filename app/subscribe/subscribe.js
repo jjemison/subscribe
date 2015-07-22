@@ -9,6 +9,7 @@ angular.module('mySub.subscribe', ['ngRoute', 'firebase'])
   });
 }])
 
+
 .controller('SubscribeCtrl', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 
   var ref = new Firebase('https://subscription-tracker.firebaseio.com/subscribe');
@@ -18,6 +19,37 @@ angular.module('mySub.subscribe', ['ngRoute', 'firebase'])
 
   $scope.showAddForm = function() {
     $scope.addFormShow = true;
+  }
+
+  $scope.hide = function() {
+    $scope.addFormShow = false;
+  }
+
+  $scope.addFormSubmit = function() {
+    console.log('addining contact...')
+    
+    // assigning values
+    if($scope.name) { var name = $scope.name } else { var name = null;}
+    if($scope.price){ var price = $scope.price } else { var price = null;}
+
+    $scope.subscribe.$add({
+      name: name,
+      price: price
+    }).then(function(ref) {
+      var id = ref.key();
+      console.log('added contact with ID:'+id)
+
+      clearFields();
+
+      $scope.addFormShow = false;
+
+      $scope.msg = "subscription added"
+    });
+  }
+
+  function clearFields() {
+    $scope.name = '';
+    $scope.price= '';
   }
 
 }]);
