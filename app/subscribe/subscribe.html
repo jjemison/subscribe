@@ -1,6 +1,18 @@
 <div class="row" ng-controller="SubscribeCtrl">
   <div class="large-10 columns">
+<!--   alert messages  -->
     <div data-alert ng-show="msg" class="alert-box">{{msg}}</div>
+
+    <div class="row" ng-show="contactShow">
+      <div class="panel">
+        <h3>{{name}}</h3>
+        <ul>
+          <li><strong>{{price | currency}}</strong></li>
+        </ul>
+      </div>
+    </div>
+
+
     <form ng-submit="addFormSubmit()" ng-show="addFormShow">
         <h3>Add Subscription</h3>
         <!-- Add Form -->
@@ -33,8 +45,8 @@
       </thead>
       <tbody>
         <tr ng-repeat= "subscriber in subscribe">
-          <td><a href="#">{{subscriber.name}}</a></td>
-          <td>{{subscriber.price}}</td>
+          <td><a ng-click="showSubsribe(subscriber)">{{subscriber.name}}</a></td>
+          <td>{{subscriber.price | currency}}</td>
           <td><a class="button tiny" ng-click="showEditForm(subscriber)">Edit</a> 
             <a class="button tiny alert" ng-click="removeSubscription(subscriber)">Delete</a></td>
         </tr>
@@ -44,6 +56,7 @@
     <div class="small-12 large-2 columns">
       <a class="button medium" ng-click="showAddForm()" ng-hide="addFormShow">+</a>
       <a class="button medium" ng-click="hide()" ng-show="addFormShow">-</a>
+      <a class="button medium" ng-click="hide()" ng-show="contactShow">-</a>
     </div>
 </div>
 

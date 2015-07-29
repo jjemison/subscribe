@@ -23,6 +23,7 @@ angular.module('mySub.subscribe', ['ngRoute', 'firebase'])
 
   $scope.hide = function() {
     $scope.addFormShow = false;
+    $scope.contactShow = false;
   }
 
   $scope.addFormSubmit = function() {
@@ -50,6 +51,14 @@ angular.module('mySub.subscribe', ['ngRoute', 'firebase'])
   function clearFields() {
     $scope.name = '';
     $scope.price= '';
+  }
+
+  $scope.showSubsribe = function(subscribe){
+    console.log('getting contact')
+    $scope.name = subscribe.name;
+    $scope.price = subscribe.price;
+
+    $scope.contactShow = true;
   }
 
 }]);
